@@ -4,6 +4,11 @@
     <title>ユーザー登録</title>
 </head>
     <style>
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -64,4 +69,4 @@
         <input type="submit" value="登録">
     </form>
 </body>
-</html
+</html>
