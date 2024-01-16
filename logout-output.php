@@ -6,6 +6,6 @@ if (isset($_SESSION['customer'])) {
     echo 'ログアウトしました。';
 } else {
     echo 'すでにログアウトしています。';
+
 }
-var_dump($_SESSION);
 ?>

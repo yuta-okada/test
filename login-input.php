@@ -1,3 +1,4 @@
+<?php require 'menu.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #ffffcc; /* 薄い黄色の背景色 */
             margin: 0;
             padding: 0;
         }
@@ -54,7 +55,7 @@
 <body>
     <h1>ユーザー登録</h1>
     <form action="login_pdo.php" method="post">
-        <label for="login">ログイン名:</label>
+        <label for="login">ユーザー名:</label>
         <input type="text" name="login" id="login" required><br><br>
         
         <label for="password">パスワード:</label>

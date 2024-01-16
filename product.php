@@ -1,5 +1,22 @@
 <?php require 'menu.php'; ?>
 <style>
+    form {
+        margin-top: 10px;
+    }
+
+    input[type="text"], input[type="submit"] {
+        padding: 8px;
+        margin-right: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        cursor: pointer;
+        background-color: #0066cc;
+        color: #fff;
+        border: 1px solid #0066cc;
+    }
     table {
         width: 100%;
         border-collapse: collapse;
@@ -37,22 +54,22 @@
 <hr>
 <?php
 echo '<table>';
-echo '<tr><th>カテゴリー</th><th>商品名</th></tr>';
+echo '<tr><th>カテゴリー</th><th>ジャンル</th></tr>';
 $pdo = new PDO('mysql:host=localhost;dbname=clothes;charset=utf8', 'root', '');
 
 if (isset($_REQUEST['keyword'])) {
-    $sql = $pdo->prepare('SELECT category, name, id FROM product WHERE name LIKE ?');
+    $sql = $pdo->prepare('SELECT category, genre, id FROM product WHERE genre LIKE ?');
     $sql->execute(['%' . $_REQUEST['keyword'] . '%']);
 } else {
-    $sql = $pdo->query('SELECT category, name, id FROM product');
+    $sql = $pdo->query('SELECT category, genre, id FROM product');
 }
 
 // カテゴリー別に商品名をグループ化
 $groupedProducts = [];
-foreach ($sql as $row) {
-    $category = $row['category'];
-    $productName = $row['name'];
-    $productId = $row['id'];
+foreach ($sql as $product) {
+    $category = $product['category'];
+    $productName = $product['genre'];
+    $productId = $product['id'];
     if (!isset($groupedProducts[$category][$productName])) {
         $groupedProducts[$category][$productName] = $productId;
     }
@@ -64,7 +81,7 @@ foreach ($groupedProducts as $category => $productNames) {
     echo '<td style="font-weight: bold;">', $category, '</td>';
     echo '<td>';
     foreach ($productNames as $productName => $productId) {
-        echo '<a href="detail.php?id=', $productId, '">', $productName, '</a>';
+        echo '<a href="detail.php?name=', urlencode($productName), '">', $productName, '</a>';
     }
     echo '</td>';
     echo '</tr>';

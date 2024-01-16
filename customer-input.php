@@ -1,9 +1,10 @@
+<?php require 'menu.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>ユーザー登録</title>
 </head>
-    <style>
+<style>
         h1 {
             color: #333;
             text-align: center;
@@ -11,7 +12,7 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #ffffcc; /* 薄い黄色の背景色 */
             margin: 0;
             padding: 0;
         }
@@ -41,6 +42,13 @@
             box-sizing: border-box;
         }
 
+        input[type="password"] {
+            width: 100%; /* 幅を100%に設定 */
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
@@ -50,7 +58,7 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-    </style>
+</style>
 <body>
     <h1>新規登録</h1>
     <form action="login_pdo.php" method="post">
@@ -64,9 +72,10 @@
         <input type="text" name="address" id="address" required><br><br>
 
         <label for="password">パスワード:</label>
-        <input type="text" name="password" id="password" required><br><br>
+        <input type="password" name="password" id="password" required><br><br>
         
         <input type="submit" value="登録">
     </form>
 </body>
 </html>
+

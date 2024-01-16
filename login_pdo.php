@@ -66,6 +66,7 @@ try {
             if ($insertSql->execute()) {
                 // 登録が成功した場合、成功メッセージを表示
                 echo 'ログインID、名前、住所、パスワードを登録完了しました。';
+                echo '<p><a href="login-input.php">ログインへ</a></p>';
             } else {
                 // 登録に失敗した場合のエラーメッセージ
                 echo 'ユーザーの登録に失敗しました。';
